@@ -15,7 +15,7 @@ public class Biblioteca extends Exception{
 
     public void registrarPublicacion(Publicacion publicacion){   
             if (publicaciones.contains(publicacion)) {
-                System.out.println("La publicacion ya se encuentra agregada a la biblioteca");   
+                System.out.println("ERROR : La publicacion con ID: "+publicacion.id+" ya se encuentra agregada a la biblioteca");   
             }else{
         System.out.println(" La publicacion : " + publicacion);
             publicaciones.add(publicacion);

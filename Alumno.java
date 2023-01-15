@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.*;
+import java.io.*;
 
 public class Alumno {
     //Atributos
@@ -28,12 +30,23 @@ public class Alumno {
             prestamos.add(prestamo);
         } catch (Exception e) {
             // TODO: handle exception
-            System.out.println("Prestamo No exitoso para PUBLI: " + p);
+            if (biblio.publicaciones.contains(p)) {
+                System.out.println("Prestamo No exitoso para PUBLICACION: " + p+"\n");
+            }else{
+                System.out.println("Prestamo No exitoso La PUBLICACION no se encuentra en Biblioteca: " + p+"");
+            }
         }
-        System.out.println("Prestamos de Alumno: " + nombre +" con matricula: " + matricula + " prestado = "+prestamos.size() +" \n"+prestamos+"\n");
+        System.out.println("+++++++++++++++++++++++++ Solicitud de Prestamo +++++++++++++++++++++++++++++++++++++++++");
+        System.out.println("Prestamos de Alumno: " + nombre +" con matricula: " + matricula + " prestado = "+prestamos.size() +"");
+        for(int i = 0; i<prestamos.size(); i++){
+            System.out.println(+i+1+" --> "+prestamos.get(i));
+        }
+        System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
 
     public void imprimeLibrosPorGenero(){
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        System.out.println(">> Imprimiendo libros por Genero para alumno " + nombre +" con matricula: " + matricula+" <<");
         Prestamo[] presta = new Prestamo[15];
         Publicacion[] publi = new Publicacion[15];
         for (int i = 0; i < prestamos.size(); i++){
@@ -50,6 +63,26 @@ public class Alumno {
                 System.out.println("Publicacion de PERIODICOS -> " + per);    
             }
         }
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        System.out.println("\n");
+    }
+
+    public void imprimeLibrosPorGeneroS(){
+        Libro compar = new Libro();
+        compar.comparaLibro(compar);
+        System.out.println(">> Imprimiendo libros por Genero para alumno " + nombre +" con matricula: " + matricula+" <<");
+        Prestamo[] presta = new Prestamo[15];
+        Publicacion[] publi = new Publicacion[15];
+        for (int i = 0; i < prestamos.size(); i++){
+            presta[i] = prestamos.get(i);
+            publi[i] = presta[i].p;
+            if( publi[i] instanceof Libro){
+                Libro lib = (Libro) publi[i];
+                compar.comparaLibro(lib);
+                //System.out.println("Publicacion de LIBROS -> "+ );
+        }
+    }
+        
     }
 
     public void imprimePrestamos(){
@@ -57,16 +90,19 @@ public class Alumno {
     }
 
     public void imprimeRevistas(){
-        Prestamo[] presta = new Prestamo[15];
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+        System.out.println(">> Imprimiendo Revistas para alumno " + nombre +" con matricula: " + matricula+" <<");
+        Prestamo[] presta = new Prestamo[prestamos.size()];
         Publicacion[] publi = new Publicacion[15];
         for (int i = 0; i < prestamos.size(); i++){
             presta[i] = prestamos.get(i);
             publi[i] = presta[i].p;
              if (publi[i] instanceof Revista) {
                 Revista rev = (Revista) publi[i];
-                System.out.println("Publicacion de REVISTAS -> " + rev);
+                System.out.println("Publicacion de REVISTAS -> " +i+"-"+ rev);
             }
     }
+    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 }
 
     public void imprimePeriodicos(){
@@ -83,4 +119,5 @@ public class Alumno {
     }
 
     }
+
 }

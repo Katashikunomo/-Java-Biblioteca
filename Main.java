@@ -41,13 +41,23 @@ public class Main {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++ Creando Biblioteca ++++++++++++++++++++++++++++++++++");
         Biblioteca biblioteca = new Biblioteca();
         System.out.println("Registrando publicaciones...");
+        biblioteca.registrarPublicacion(rev1);
+        biblioteca.registrarPublicacion(rev2);
+        biblioteca.registrarPublicacion(rev3);
         biblioteca.registrarPublicacion(lib1);
         biblioteca.registrarPublicacion(lib2);
         biblioteca.registrarPublicacion(lib3);
         biblioteca.registrarPublicacion(lib4);
         biblioteca.registrarPublicacion(lib5);
+        biblioteca.registrarPublicacion(lib6);
+        biblioteca.registrarPublicacion(lib7);
+        biblioteca.registrarPublicacion(lib8);
+        biblioteca.registrarPublicacion(lib9);
+        biblioteca.registrarPublicacion(lib10);
+        biblioteca.registrarPublicacion(per1);
+        biblioteca.registrarPublicacion(per2);
         biblioteca.registrarPublicacion(per6);
-        biblioteca.registrarPublicacion(per6);
+        biblioteca.registrarPublicacion(per6);  
 
         biblioteca.imprimeBiblioteca();
 
@@ -69,6 +79,12 @@ public class Main {
 
         biblioteca.imprimeBiblioteca();
 
-      //  hinojos.solicitarPrestamo(biblioteca, 124, "10 marzo", "5 enero");
+        juan.solicitarPrestamo(biblioteca, per4, "8 enero", "5 mayo");
+
+        hinojos.solicitarPrestamo(biblioteca, rev1,"14 enero","5 abril");
+        hinojos.solicitarPrestamo(biblioteca, rev3,"14 enero","5 abril");
+        hinojos.imprimeRevistas();
+       // hinojos.imprimeLibrosPorGeneroS();
+        
     }
 }
