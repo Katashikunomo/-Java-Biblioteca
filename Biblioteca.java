@@ -48,6 +48,22 @@ public class Biblioteca extends Exception{
         }
         //crear objeto prestamo
         return null;
+        
+    }
+
+    public Prestamo devuelvePublicacion(Publicacion p){
+        Prestamo presta;
+        if (publicaciones.contains(p)) {
+           if (p.estado == false){
+               p.estado = true;
+               presta = new Prestamo(p,null,null);
+               return presta;
+           }else{
+               return null;
+           }
+       }
+       //crear objeto prestamo
+       return null;
     }
 
 

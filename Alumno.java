@@ -44,23 +44,57 @@ public class Alumno {
         System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
     }
 
+    public void devolverPrestamo(Biblioteca biblio,Publicacion pre){
+        Prestamo publi = new Prestamo(); 
+        ArrayList<Publicacion> publicacionesArray = new ArrayList<>();
+        Publicacion p2 ;
+        if(prestamos.size() > 0){
+            for(int i = 0; i<prestamos.size();i++){
+                publi = prestamos.get(i);
+                p2 = publi.p;
+                publicacionesArray.add(p2);
+                if (publi.p.estado == true) {
+                    prestamos.remove(publi);
+                    break;
+                }      
+            }
+            if (publicacionesArray.contains(pre) == (pre.estado== false)) {
+                System.out.println("-----Libro prestado para devolver= "+pre);
+                biblio.devuelvePublicacion(pre);
+                System.out.println("Se ha devuelto correctamente!! " + pre);
+
+            }else{
+                System.out.println(">!La publicacion "+pre+" que intenats devolver no la tienes !!");
+        }
+            } else{
+                System.out.println("¡¡No tienes libros para devolver!!");
+            }
+    }
+
     public void imprimeLibrosPorGenero(){
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-        System.out.println(">> Imprimiendo libros por Genero para alumno " + nombre +" con matricula: " + matricula+" <<");
-        Prestamo[] presta = new Prestamo[15];
-        Publicacion[] publi = new Publicacion[15];
+        System.out.println(">> Imprimiendo libros por Genero para alumno " + nombre +" con matricula: " + matricula+" total prestados= " + prestamos.size()+" <<");
+        Prestamo[] presta = new Prestamo[prestamos.size()];
+        Publicacion[] publi = new Publicacion[prestamos.size()];
         for (int i = 0; i < prestamos.size(); i++){
             presta[i] = prestamos.get(i);
             publi[i] = presta[i].p;
             if( publi[i] instanceof Libro){
                 Libro lib = (Libro) publi[i];
-                System.out.println("Publicacion de LIBROS -> "+lib);
-            }else if (publi[i] instanceof Revista) {
-                Revista rev = (Revista) publi[i];
-                System.out.println("Publicacion de REVISTAS -> " + rev);
-            }else if(publi[i] instanceof Periodico){
-                Periodico per = (Periodico) publi[i];
-                System.out.println("Publicacion de PERIODICOS -> " + per);    
+                if (lib.genero == "Romance") {
+                    System.out.println("ROMANCE --> " +lib);
+                }else if (lib.genero == "Terror") {
+                    System.out.println("TERROR --> " + lib);
+                }else if(lib.genero == "Ficcion"){
+                    System.out.println("FICCION --> " + lib);
+                }
+               //System.out.println("Publicacion de LIBROS -> "+lib);
+            //}else if (publi[i] instanceof Revista) {
+              //  Revista rev = (Revista) publi[i];
+               // System.out.println("Publicacion de REVISTAS -> " + rev);
+            //}else if(publi[i] instanceof Periodico){
+              //  Periodico per = (Periodico) publi[i];
+              //  System.out.println("Publicacion de PERIODICOS -> " + per);    
             }
         }
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");

@@ -85,6 +85,12 @@ public class Main {
         hinojos.solicitarPrestamo(biblioteca, rev3,"14 enero","5 abril");
         hinojos.imprimeRevistas();
        // hinojos.imprimeLibrosPorGeneroS();
-        
+       hinojos.devolverPrestamo(biblioteca, rev3);
+       hinojos.devolverPrestamo(biblioteca, rev3);
+       
+       biblioteca.imprimeBiblioteca();
+       
+       jesus.imprimeLibrosPorGenero();
+       hinojos.imprimeLibrosPorGenero();
     }
 }
