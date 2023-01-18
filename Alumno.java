@@ -18,6 +18,7 @@ public class Alumno {
         this.nombre = nombre;
         this.matricula = matricula;
         prestamos = new ArrayList<>();
+       
     }
 
     //metodos
@@ -30,8 +31,16 @@ public class Alumno {
             prestamos.add(prestamo);
         } catch (Exception e) {
             // TODO: handle exception
-            if (biblio.publicaciones.contains(p)) {
+            if (biblio.publicaciones.contains(p) || prestamos.size() > 5) {
                 System.out.println("Prestamo No exitoso para PUBLICACION: " + p+"\n");
+                try {
+                    System.out.println("No puedes pedir mas de 5 Publicaciones prestadas");
+                    prestamos.remove(5);
+                    
+                } catch (Exception f) {
+                    // TODO: handle exception
+                }
+               
             }else{
                 System.out.println("Prestamo No exitoso La PUBLICACION no se encuentra en Biblioteca: " + p+"");
             }

@@ -56,6 +56,7 @@ public class Main {
         biblioteca.registrarPublicacion(lib10);
         biblioteca.registrarPublicacion(per1);
         biblioteca.registrarPublicacion(per2);
+        biblioteca.registrarPublicacion(per5);
         biblioteca.registrarPublicacion(per6);
         biblioteca.registrarPublicacion(per6);  
 
@@ -92,5 +93,9 @@ public class Main {
        
        jesus.imprimeLibrosPorGenero();
        hinojos.imprimeLibrosPorGenero();
+
+       hinojos.solicitarPrestamo(biblioteca, rev2, null, null);
+       hinojos.solicitarPrestamo(biblioteca, per5, null, null);
+       hinojos.solicitarPrestamo(biblioteca, per5, null, null);
     }
 }
